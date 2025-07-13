@@ -24,14 +24,14 @@ jobs:
             MONGO_URI: 'mongodb://localhost:27017/superData'
             MONGO_USERNAME: non-prod-user
             MONGO_PASSWORD: non-prod-password
-        strategy:
-            matrix:
-                nodejs_version: [20]
-                operating_system: [ubuntu-latest]
-                exclude:
-                    - nodejs_version: 18
-                      operating_system: macos-latest
-        runs-on: ${{ matrix.operating_system }}
+     #   strategy:
+     #       matrix:
+     #           nodejs_version: [20]
+     #           operating_system: [ubuntu-latest]
+     #           exclude:
+     #               - nodejs_version: 18
+     #                 operating_system: macos-latest
+        runs-on: self-hosted
         steps:
         - name: Checkout Repository
           uses: actions/checkout@v3
