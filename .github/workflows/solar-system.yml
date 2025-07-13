@@ -39,10 +39,14 @@ jobs:
         steps:
         - name: Checkout Repository
           uses: actions/checkout@v3
+       
         - name: Setup NodeJS Version - ${{ matrix.nodejs_version }}
           uses: actions/setup-node@v3
           with:
             node-version: ${{ matrix.nodejs_version }}
+        
+        - name: Install Dependencies
+          run: npm install
 
         - name: Composite Action - Cache & Install NPM Packages
           uses: ./.github/custom-actions/npm-action
