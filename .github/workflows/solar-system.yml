@@ -214,7 +214,7 @@ jobs:
         steps:
           - name: Test URL Output using CURL and JQ
             env:
-              URL: ${{ needs.dev-deploy.outputs.application-url }}
+              URL: solar-system.192.168.1.4.nip.io:31144
             run: |
               echo $URL
               echo "--------------------------------------------"
@@ -240,7 +240,7 @@ jobs:
         steps:
           - name: Test URL Output using CURL and JQ
             env:
-              URL: ${{ needs.prod-deploy.outputs.application-url }}
+              URL: solar-system.192.168.1.4.nip.io:31144
             run: |
               echo $URL
               echo "--------------------------------------------"
