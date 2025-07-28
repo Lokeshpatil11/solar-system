@@ -236,7 +236,7 @@ jobs:
         name: Prod Integration Testing
         if: github.ref == 'refs/heads/main'
         needs: prod-deploy
-        runs-on: ubuntu-latest
+        runs-on: self-hosted
         steps:
           - name: Test URL Output using CURL and JQ
             env:
