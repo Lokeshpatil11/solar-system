@@ -33,9 +33,9 @@ jobs:
      #                 operating_system: macos-latest
         runs-on: self-hosted
         env:
-          MONGO_URI:  mongodb://non-prod-user:non-prod-password@localhost:27017/superData?authSource=admin&directConnection=true
-          MONGO_USERNAME: non‑prod‑user
-          MONGO_PASSWORD: non‑prod‑password
+          MONGO_URI:  'mongodb://localhost:27017/superData'
+          MONGO_USERNAME: non-prod-user
+          MONGO_PASSWORD: non-prod-password
         steps:
         - name: Checkout Repository
           uses: actions/checkout@v3
