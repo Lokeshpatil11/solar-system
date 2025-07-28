@@ -64,7 +64,6 @@ jobs:
               run: |
                   NODE_IP=$(kubectl get nodes -o jsonpath="{.items[0].status.addresses[?(@.type=='InternalIP')].address}")
                   echo "INGRESS_IP=$NODE_IP" >> $GITHUB_ENV
-              //   echo "INGRESS_IP=$(kubectl -n ingress-nginx get services ingress-nginx-controller -o jsonpath="{.status.loadBalancer.ingress[0].ip}")" >> $GITHUB_ENV
             
             - name: Replace Token in Manifest files
               uses: cschleiden/replace-tokens@v1
