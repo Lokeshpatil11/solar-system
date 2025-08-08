@@ -8,7 +8,7 @@ on:
       - 'feature/*'
 
 env:
-    MONGO_URI:  mongodb://localhost:27017/superData?directConnection=true
+    MONGO_URI:  mongodb://mongodb-service.default.svc.cluster.local:27017
     MONGO_USERNAME: ${{ vars.MONGO_USERNAME }}
     MONGO_PASSWORD: ${{ secrets.MONGO_PASSWORD }}     
 
@@ -232,19 +232,19 @@ jobs:
         environment: production
         k8s-manifest-dir: kubernetes/production/
       
-  #  prod-integration-testing:
-  #      name: Prod Integration Testing
-  #      if: github.ref == 'refs/heads/main'
-  #      needs: prod-deploy
-  #      runs-on: self-hosted
-  #      steps:
-  #        - name: Test URL Output using CURL and JQ
-  #          env:
-  #            URL: solar-system.192.168.80.129.nip.io:31144
-  #          run: |
-  #            echo $URL
-  #            echo "--------------------------------------------"
-  #            curl https://$URL/live -s -k | jq -r .status | grep -i live
+    prod-integration-testing:
+        name: Prod Integration Testing
+        if: github.ref == 'refs/heads/main'
+        needs: prod-deploy
+        runs-on: self-hosted
+        steps:
+          - name: Test URL Output using CURL and JQ
+            env:
+              URL: solar-system.192.168.80.129.nip.io:31144
+            run: |
+              echo $URL
+              echo "--------------------------------------------"
+              curl https://$URL/live -s -k | jq -r .status | grep -i live
 
     slack-notification:
       if: always()
